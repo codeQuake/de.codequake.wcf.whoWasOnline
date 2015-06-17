@@ -51,12 +51,12 @@ class WhoWasOnlineCacheBuilder extends AbstractCacheBuilder
 
         $sql = '
             SELECT user_table.userID, option_value.userOption' . $optionID . ' AS canViewOnlineStatus
-			FROM wcf' . WCF_N . '_user user_table
-			LEFT JOIN wcf' . WCF_N . '_session session ON (session.userID = user_table.userID)
-			LEFT JOIN wcf' . WCF_N . '_user_option_value option_value ON (option_value.userID = user_table.userID)
-			WHERE user_table.lastActivityTime > ?
-			    AND (session.sessionID IS NULL OR session.lastActivityTime < ?)
-			ORDER BY user_table.' . WHO_WAS_ONLINE_SORT_FIELD . ' ' . WHO_WAS_ONLINE_SORT_ORDER;
+            FROM wcf' . WCF_N . '_user user_table
+            LEFT JOIN wcf' . WCF_N . '_session session ON (session.userID = user_table.userID)
+            LEFT JOIN wcf' . WCF_N . '_user_option_value option_value ON (option_value.userID = user_table.userID)
+            WHERE user_table.lastActivityTime > ?
+                AND (session.sessionID IS NULL OR session.lastActivityTime < ?)
+            ORDER BY user_table.' . WHO_WAS_ONLINE_SORT_FIELD . ' ' . WHO_WAS_ONLINE_SORT_ORDER;
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute(array($threshold, TIME_NOW - USER_ONLINE_TIMEOUT));
 
