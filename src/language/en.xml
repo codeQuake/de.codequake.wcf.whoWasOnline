@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/language.xsd"
+          languagecode="en">
+    <category name="wcf.acp.option">
+        <item name="wcf.acp.option.category.dashboard.content.whoWasOnline"><![CDATA["Who was online?" list]]></item>
+        <item name="wcf.acp.option.category.dashboard.sidebar.whoWasOnline"><![CDATA["Who was online?" list]]></item>
+        <item name="wcf.acp.option.category.user.list.whoWasOnline"><![CDATA["Who was online?" list]]></item>
+        <item name="wcf.acp.option.who_was_online_period"><![CDATA[Timeframe]]></item>
+        <item name="wcf.acp.option.who_was_online_period.24h"><![CDATA[Last 24 hours]]></item>
+        <item name="wcf.acp.option.who_was_online_period.today"><![CDATA[Today]]></item>
+        <item name="wcf.acp.option.who_was_online_content_display"><![CDATA[Anzeige]]></item>
+        <item name="wcf.acp.option.who_was_online_sidebar_display"><![CDATA[Display]]></item>
+        <item name="wcf.acp.option.who_was_online_sidebar_items"><![CDATA[Number of users]]></item>
+        <item name="wcf.acp.option.who_was_online_sort_field"><![CDATA[Sort field]]></item>
+        <item name="wcf.acp.option.who_was_online_sort_order"><![CDATA[Sort order]]></item>
+    </category>
+
+    <category name="wcf.dashboard">
+        <item name="wcf.dashboard.box.de.codequake.wcf.whoWasOnline">
+            <![CDATA[Who was online{if $whoWasOnlineListCount|isset} <span class="badge">{#$whoWasOnlineListCount}</span>{/if}]]></item>
+        <item name="wcf.dashboard.box.de.codequake.wcf.whoWasOnlineContent"><![CDATA[Who was online]]></item>
+    </category>
+
+    <category name="wcf.user.whoWasOnline">
+        <item name="wcf.user.whoWasOnline.display.avatars"><![CDATA[Avatars]]></item>
+        <item name="wcf.user.whoWasOnline.display.usernames"><![CDATA[Username]]></item>
+        <item name="wcf.user.whoWasOnline.showAll"><![CDATA[Show all]]></item>
+        <item name="wcf.user.whoWasOnline.title">
+            <![CDATA[Users who were online {if WHO_WAS_ONLINE_PERIOD == 'today'}today{else}in the past 24 hours{/if}]]></item>
+    </category>
+</language>
