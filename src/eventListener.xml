@@ -3,6 +3,11 @@
       xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/maelstrom/eventListener.xsd">
     <import>
         <eventlistener>
+            <eventclassname>wcf\acp\form\OptionForm</eventclassname>
+            <eventname>saved</eventname>
+            <listenerclassname>wcf\system\event\listener\ForceResetWhoWasOnlineListener</listenerclassname>
+        </eventlistener>
+        <eventlistener>
             <eventclassname>wcf\action\LogoutAction</eventclassname>
             <eventname>executed</eventname>
             <listenerclassname>wcf\system\event\listener\ForceResetWhoWasOnlineListener</listenerclassname>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the event listener to reset the who was online cache upon logout of an user.
+ * Contains the event listener to reset the who was online cache.
  *
  * @author    Florian Frantzen <ray176@me.com>
  * @copyright 2015 codequake.de
@@ -13,7 +13,9 @@ namespace wcf\system\event\listener;
 use wcf\system\cache\builder\WhoWasOnlineCacheBuilder;
 
 /**
- * Force resetting the who was online cache when a user logs out.
+ * Force resetting the who was online cache under the following scenarios:
+ * - logout of an user
+ * - options were changed
  */
 class ForceResetWhoWasOnlineListener implements IParameterizedEventListener
 {

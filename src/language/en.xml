@@ -6,10 +6,11 @@
         <item name="wcf.acp.option.category.dashboard.content.whoWasOnline"><![CDATA["Who was online?" list]]></item>
         <item name="wcf.acp.option.category.dashboard.sidebar.whoWasOnline"><![CDATA["Who was online?" list]]></item>
         <item name="wcf.acp.option.category.user.list.whoWasOnline"><![CDATA["Who was online?" list]]></item>
-        <item name="wcf.acp.option.who_was_online_period"><![CDATA[Timeframe]]></item>
+        <item name="wcf.acp.option.who_was_online_content_display"><![CDATA[Display]]></item>
+        <item name="wcf.acp.option.who_was_online_exclude_active"><![CDATA[Exclude Active Users]]></item>
+        <item name="wcf.acp.option.who_was_online_period"><![CDATA[Threshold]]></item>
         <item name="wcf.acp.option.who_was_online_period.24h"><![CDATA[Last 24 hours]]></item>
         <item name="wcf.acp.option.who_was_online_period.today"><![CDATA[Today]]></item>
-        <item name="wcf.acp.option.who_was_online_content_display"><![CDATA[Anzeige]]></item>
         <item name="wcf.acp.option.who_was_online_sidebar_display"><![CDATA[Display]]></item>
         <item name="wcf.acp.option.who_was_online_sidebar_items"><![CDATA[Number of users]]></item>
         <item name="wcf.acp.option.who_was_online_sort_field"><![CDATA[Sort field]]></item>

@@ -20,9 +20,13 @@
                 <categoryname>user.list.whoWasOnline</categoryname>
                 <optiontype>radioButton</optiontype>
                 <defaultvalue>today</defaultvalue>
-                <selectoptions>today:wcf.acp.option.who_was_online_period.today
-                    24h:wcf.acp.option.who_was_online_period.24h
-                </selectoptions>
+                <selectoptions><![CDATA[today:wcf.acp.option.who_was_online_period.today
+24h:wcf.acp.option.who_was_online_period.24h]]></selectoptions>
+            </option>
+            <option name="who_was_online_exclude_active">
+                <categoryname>user.list.whoWasOnline</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
             </option>
             <option name="who_was_online_sort_field">
                 <categoryname>user.list.whoWasOnline</categoryname>
@@ -45,9 +49,8 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
                 <categoryname>dashboard.content.whoWasOnline</categoryname>
                 <optiontype>radioButton</optiontype>
                 <defaultvalue>avatars</defaultvalue>
-                <selectoptions>avatars:wcf.user.whoWasOnline.display.avatars
-                    usernames:wcf.user.whoWasOnline.display.usernames
-                </selectoptions>
+                <selectoptions><![CDATA[avatars:wcf.user.whoWasOnline.display.avatars
+usernames:wcf.user.whoWasOnline.display.usernames]]></selectoptions>
             </option>
             <!-- /dashboard.content.whoWasOnline -->
 
@@ -56,9 +59,8 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
                 <categoryname>dashboard.sidebar.whoWasOnline</categoryname>
                 <optiontype>radioButton</optiontype>
                 <defaultvalue>avatars</defaultvalue>
-                <selectoptions>avatars:wcf.user.whoWasOnline.display.avatars
-                    usernames:wcf.user.whoWasOnline.display.usernames
-                </selectoptions>
+                <selectoptions><![CDATA[avatars:wcf.user.whoWasOnline.display.avatars
+usernames:wcf.user.whoWasOnline.display.usernames]]></selectoptions>
             </option>
             <option name="who_was_online_sidebar_items">
                 <categoryname>dashboard.sidebar.whoWasOnline</categoryname>

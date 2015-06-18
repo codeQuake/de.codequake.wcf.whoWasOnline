@@ -38,7 +38,7 @@ class WhoWasOnlineCache extends SingletonFactory
         $this->userIDs = WhoWasOnlineCacheBuilder::getInstance()->getData();
 
         // Remove user itself. That prevents contradicting listings caused by an outdated cache.
-        if (WCF::getUser()->userID && array_key_exists(WCF::getUser()->userID, $this->userIDs)) {
+        if (WHO_WAS_ONLINE_EXCLUDE_ACTIVE && WCF::getUser()->userID) {
             unset($this->userIDs[WCF::getUser()->userID]);
         }
     }

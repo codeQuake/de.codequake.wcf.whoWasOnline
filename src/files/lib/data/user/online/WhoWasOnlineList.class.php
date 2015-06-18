@@ -24,6 +24,7 @@ class WhoWasOnlineList extends DatabaseObjectList
      */
     public function __construct($displayMode)
     {
+        $this->className = 'wcf\data\user\User';
         $this->decoratorClassName = 'wcf\data\user\online\UserWasOnline';
         $this->sqlOrderBy = 'user_table.lastActivityTime DESC';
 

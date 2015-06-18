@@ -20,7 +20,7 @@ use wcf\system\WCF;
 /**
  * Content dashboard box of a list of users who were online.
  */
-class WhoWasOnlineDashboardContentBox extends AbstractContentDashboardBox
+class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
 {
     /**
      * user profile list
