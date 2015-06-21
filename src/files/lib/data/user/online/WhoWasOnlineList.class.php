@@ -50,8 +50,9 @@ class WhoWasOnlineList extends DatabaseObjectList
                 break;
 
             default:
-                throw new InvalidArgumentException('Invalid display mode "' . $displayMode . '" given. Expected
-                either "avatars" or "usernames".');
+                throw new InvalidArgumentException(
+                    'Invalid display mode "' . $displayMode . '" given. Expected either "avatars" or "usernames".'
+                );
         }
 
         parent::__construct();

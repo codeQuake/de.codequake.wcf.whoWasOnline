@@ -58,7 +58,10 @@ class WhoWasOnlineCache extends SingletonFactory
         $userIDs = array();
 
         foreach ($this->userIDs as $userID => $canViewOnlineStatus) {
-            if ($canViewOnlineStatus === 0 || WCF::getSession()->getPermission('admin.user.canViewInvisible')) {
+            if ($canViewOnlineStatus === 0 ||
+                $userID === WCF::getUser()->userID ||
+                WCF::getSession()->getPermission('admin.user.canViewInvisible')
+            ) {
                 $userIDs[] = $userID;
             } elseif (WCF::getUser()->userID) {
                 if ($canViewOnlineStatus === 1) {
@@ -83,8 +86,9 @@ class WhoWasOnlineCache extends SingletonFactory
     {
         // validate given display mode
         if ($displayMode !== 'avatars' && $displayMode !== 'usernames') {
-            throw new InvalidArgumentException('Invalid display mode "' . $displayMode . '" given. Expected either
-            "avatars" or "usernames".');
+            throw new InvalidArgumentException(
+                'Invalid display mode "' . $displayMode . '" given. Expected either "avatars" or "usernames".'
+            );
         }
 
         $accessibleUserIDs = $this->getAccessibleUserIDs();

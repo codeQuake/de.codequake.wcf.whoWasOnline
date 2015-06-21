@@ -44,8 +44,9 @@ class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
         try {
             $this->users = WhoWasOnlineCache::getInstance()->getAccessibleUsers(WHO_WAS_ONLINE_CONTENT_DISPLAY);
         } catch (InvalidArgumentException $e) {
-            throw new SystemException('Invalid value "' . WHO_WAS_ONLINE_CONTENT_DISPLAY . '" for option
-            WHO_WAS_ONLINE_CONTENT_DISPLAY.');
+            throw new SystemException(
+                'Invalid value "' . WHO_WAS_ONLINE_CONTENT_DISPLAY . '" for option WHO_WAS_ONLINE_CONTENT_DISPLAY.'
+            );
         }
 
         $this->fetched();

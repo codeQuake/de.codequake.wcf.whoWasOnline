@@ -44,8 +44,9 @@ class WhoWasOnlineSidebarDashboardBox extends AbstractSidebarDashboardBox
         try {
             $this->users = WhoWasOnlineCache::getInstance()->getAccessibleUsers(WHO_WAS_ONLINE_SIDEBAR_DISPLAY);
         } catch (InvalidArgumentException $e) {
-            throw new SystemException('Invalid value "' . WHO_WAS_ONLINE_SIDEBAR_DISPLAY . '" for option
-            WHO_WAS_ONLINE_SIDEBAR_DISPLAY.');
+            throw new SystemException(
+                'Invalid value "' . WHO_WAS_ONLINE_SIDEBAR_DISPLAY . '" for option WHO_WAS_ONLINE_SIDEBAR_DISPLAY.'
+            );
         }
 
         $this->fetched();
