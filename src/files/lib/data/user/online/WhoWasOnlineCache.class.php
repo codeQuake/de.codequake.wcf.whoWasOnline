@@ -58,13 +58,13 @@ class WhoWasOnlineCache extends SingletonFactory
         $userIDs = array();
 
         foreach ($this->userIDs as $userID => $canViewOnlineStatus) {
-            if ($canViewOnlineStatus === 0 ||
+            if ($canViewOnlineStatus === '0' ||
                 $userID === WCF::getUser()->userID ||
                 WCF::getSession()->getPermission('admin.user.canViewInvisible')
             ) {
                 $userIDs[] = $userID;
             } elseif (WCF::getUser()->userID) {
-                if ($canViewOnlineStatus === 1) {
+                if ($canViewOnlineStatus === '1') {
                     $userIDs[] = $userID;
                 } elseif (UserProfileHandler::getInstance()->isFollowing($userID)) {
                     $userIDs[] = $userID;
