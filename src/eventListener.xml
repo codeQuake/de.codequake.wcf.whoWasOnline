@@ -5,11 +5,13 @@
         <eventlistener>
             <eventclassname>wcf\acp\form\OptionForm</eventclassname>
             <eventname>saved</eventname>
+            <environment>admin</environment>
             <listenerclassname>wcf\system\event\listener\ForceResetWhoWasOnlineListener</listenerclassname>
         </eventlistener>
         <eventlistener>
             <eventclassname>wcf\action\LogoutAction</eventclassname>
             <eventname>executed</eventname>
+            <environment>user</environment>
             <listenerclassname>wcf\system\event\listener\ForceResetWhoWasOnlineListener</listenerclassname>
         </eventlistener>
     </import>
