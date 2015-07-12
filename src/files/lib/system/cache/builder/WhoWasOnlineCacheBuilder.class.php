@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Contains the who was online cache builder.
  *
  * @author    Florian Frantzen <ray176@me.com>
  * @copyright 2015 codequake.de
  * @license   LGPL
- * @package   de.codequake.wcf.whoWasOnline
  */
 
 namespace wcf\system\cache\builder;
@@ -32,8 +32,8 @@ class WhoWasOnlineCacheBuilder extends AbstractCacheBuilder
     /**
      * {@inheritdoc}
      *
-     * @param array $parameters
      * @return array
+     *
      * @throws \wcf\system\database\DatabaseException
      */
     protected function rebuild(array $parameters)
@@ -51,9 +51,7 @@ class WhoWasOnlineCacheBuilder extends AbstractCacheBuilder
                 break;
 
             default:
-                throw new SystemException(
-                    'Invalid value "' . WHO_WAS_ONLINE_CONTENT_DISPLAY . '" for option WHO_WAS_ONLINE_CONTENT_DISPLAY.'
-                );
+                throw new SystemException(sprintf('Invalid value "%s" for option WHO_WAS_ONLINE_CONTENT_DISPLAY.', WHO_WAS_ONLINE_CONTENT_DISPLAY));
         }
 
         $conditionBuilder = new PreparedStatementConditionBuilder();
@@ -61,7 +59,7 @@ class WhoWasOnlineCacheBuilder extends AbstractCacheBuilder
 
         $additionalJoin = '';
         if (WHO_WAS_ONLINE_EXCLUDE_ACTIVE) {
-            $additionalJoin = 'LEFT JOIN wcf' . WCF_N . '_session session ON (session.userID = user_table.userID)';
+            $additionalJoin = 'LEFT JOIN wcf'.WCF_N.'_session session ON (session.userID = user_table.userID)';
             $conditionBuilder->add(
                 '(session.sessionID IS NULL OR session.lastActivityTime < ?)',
                 array(TIME_NOW - USER_ONLINE_TIMEOUT)
@@ -69,12 +67,12 @@ class WhoWasOnlineCacheBuilder extends AbstractCacheBuilder
         }
 
         $sql = '
-            SELECT user_table.userID, option_value.userOption' . $optionID . ' AS canViewOnlineStatus
-            FROM wcf' . WCF_N . '_user user_table
-            LEFT JOIN wcf' . WCF_N . '_user_option_value option_value ON (option_value.userID = user_table.userID)
-            ' . $additionalJoin . '
-            ' . $conditionBuilder . '
-            ORDER BY user_table.' . WHO_WAS_ONLINE_SORT_FIELD . ' ' . WHO_WAS_ONLINE_SORT_ORDER;
+            SELECT user_table.userID, option_value.userOption'.$optionID.' AS canViewOnlineStatus
+            FROM wcf'.WCF_N.'_user user_table
+            LEFT JOIN wcf'.WCF_N.'_user_option_value option_value ON (option_value.userID = user_table.userID)
+            '.$additionalJoin.'
+            '.$conditionBuilder.'
+            ORDER BY user_table.'.WHO_WAS_ONLINE_SORT_FIELD.' '.WHO_WAS_ONLINE_SORT_ORDER;
 
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute($conditionBuilder->getParameters());

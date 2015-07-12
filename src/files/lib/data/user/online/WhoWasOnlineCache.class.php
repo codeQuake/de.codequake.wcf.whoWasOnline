@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Contains the who was online cache decorator.
  *
  * @author    Florian Frantzen <ray176@me.com>
  * @copyright 2015 codequake.de
  * @license   LGPL
- * @package   de.codequake.wcf.whoWasOnline
  */
 
 namespace wcf\data\user\online;
@@ -24,24 +24,11 @@ class WhoWasOnlineCache extends SingletonFactory
 {
     /**
      * ids of the users that were online.
-     * array structure: userID => 'canViewOnlineStatus' setting
+     * array structure: userID => `canViewOnlineStatus` setting.
      *
      * @var int[]
      */
     protected $userIDs = array();
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function init()
-    {
-        $this->userIDs = WhoWasOnlineCacheBuilder::getInstance()->getData();
-
-        // Remove user itself. That prevents contradicting listings caused by an outdated cache.
-        if (WHO_WAS_ONLINE_EXCLUDE_ACTIVE && WCF::getUser()->userID) {
-            unset($this->userIDs[WCF::getUser()->userID]);
-        }
-    }
 
     /**
      * Returns the ids of all users of whose the active user can see the online status.
@@ -79,16 +66,16 @@ class WhoWasOnlineCache extends SingletonFactory
      * Returns the users who where online. This function respects privacy settings of the users.
      *
      * @param string $displayMode 'avatars' or 'usernames'
+     *
      * @return array<\wcf\data\user\online\UserWasOnline>
+     *
      * @throws \InvalidArgumentException if the given display mode is invalid.
      */
     public function getAccessibleUsers($displayMode = 'avatars')
     {
         // validate given display mode
         if ($displayMode !== 'avatars' && $displayMode !== 'usernames') {
-            throw new InvalidArgumentException(
-                'Invalid display mode "' . $displayMode . '" given. Expected either "avatars" or "usernames".'
-            );
+            throw new InvalidArgumentException(sprintf('Invalid display mode "%s" given. Expected either "avatars" or "usernames".', $displayMode));
         }
 
         $accessibleUserIDs = $this->getAccessibleUserIDs();
@@ -113,5 +100,18 @@ class WhoWasOnlineCache extends SingletonFactory
     public function getUserIDs()
     {
         return array_keys($this->userIDs);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function init()
+    {
+        $this->userIDs = WhoWasOnlineCacheBuilder::getInstance()->getData();
+
+        // remove user itself to prevent contradicting lists caused by an outdated cache
+        if (WHO_WAS_ONLINE_EXCLUDE_ACTIVE && WCF::getUser()->userID) {
+            unset($this->userIDs[WCF::getUser()->userID]);
+        }
     }
 }

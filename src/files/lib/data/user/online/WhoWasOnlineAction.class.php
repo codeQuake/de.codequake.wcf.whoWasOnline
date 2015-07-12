@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Contains the database object action class for users who were online.
  *
  * @author    Florian Frantzen <ray176@me.com>
  * @copyright 2015 codequake.de
  * @license   LGPL
- * @package   de.codequake.wcf.whoWasOnline
  */
 
 namespace wcf\data\user\online;
@@ -21,16 +21,6 @@ use wcf\system\WCF;
  */
 class WhoWasOnlineAction extends UserAction implements IGroupedUserListAction
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function __init($baseClass, $indexName)
-    {
-        parent::__init($baseClass, $indexName);
-
-        $this->allowGuestAccess = array('getGroupedUserList');
-    }
-
     /**
      * Validates the permissions to get a grouped list of users who were online.
      *
@@ -63,12 +53,22 @@ class WhoWasOnlineAction extends UserAction implements IGroupedUserListAction
         GroupedUserList::loadUsers();
 
         WCF::getTPL()->assign(array(
-            'groupedUsers' => array($group)
+            'groupedUsers' => array($group),
         ));
 
         return array(
             'pageCount' => $pageCount,
-            'template' => WCF::getTPL()->fetch('groupedUserList')
+            'template' => WCF::getTPL()->fetch('groupedUserList'),
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function __init($baseClass, $indexName)
+    {
+        parent::__init($baseClass, $indexName);
+
+        $this->allowGuestAccess = array('getGroupedUserList');
     }
 }

@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Contains the content dashboard box class of a list of users who were online.
  *
  * @author    Florian Frantzen <ray176@me.com>
  * @copyright 2015 codequake.de
  * @license   LGPL
- * @package   de.codequake.wcf.whoWasOnline
  */
 
 namespace wcf\system\dashboard\box;
@@ -23,7 +23,7 @@ use wcf\system\WCF;
 class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
 {
     /**
-     * user profile list
+     * user profile list.
      *
      * @var array<\wcf\data\user\UserWasOnline>
      */
@@ -34,6 +34,7 @@ class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
      *
      * @param \wcf\data\dashboard\box\DashboardBox $box
      * @param \wcf\page\IPage                      $page
+     *
      * @throws \wcf\system\exception\SystemException
      */
     public function init(DashboardBox $box, IPage $page)
@@ -44,9 +45,7 @@ class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
         try {
             $this->users = WhoWasOnlineCache::getInstance()->getAccessibleUsers(WHO_WAS_ONLINE_CONTENT_DISPLAY);
         } catch (InvalidArgumentException $e) {
-            throw new SystemException(
-                'Invalid value "' . WHO_WAS_ONLINE_CONTENT_DISPLAY . '" for option WHO_WAS_ONLINE_CONTENT_DISPLAY.'
-            );
+            throw new SystemException(sprintf('Invalid value "%s" for option WHO_WAS_ONLINE_CONTENT_DISPLAY.', WHO_WAS_ONLINE_CONTENT_DISPLAY));
         }
 
         $this->fetched();
@@ -56,6 +55,7 @@ class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
      * Returns the formatted output for the who was online content box.
      *
      * @return string
+     *
      * @throws \wcf\system\exception\SystemException
      */
     protected function render()
@@ -64,10 +64,12 @@ class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
             return '';
         }
 
-        WCF::getTPL()->assign(array(
-            'whoWasOnline' => $this->users,
-            'whoWasOnlineListCount' => count(WhoWasOnlineCache::getInstance()->getUserIDs())
-        ));
+        WCF::getTPL()->assign(
+            array(
+                'whoWasOnline' => $this->users,
+                'whoWasOnlineListCount' => count(WhoWasOnlineCache::getInstance()->getUserIDs()),
+            )
+        );
 
         return WCF::getTPL()->fetch('dashboardContentBoxWhoWasOnline');
     }

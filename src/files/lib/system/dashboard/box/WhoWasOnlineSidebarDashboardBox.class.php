@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Contains the sidebar dashboard box class of a list of users who were online.
  *
  * @author    Florian Frantzen <ray176@me.com>
  * @copyright 2015 codequake.de
  * @license   LGPL
- * @package   de.codequake.wcf.whoWasOnline
  */
 
 namespace wcf\system\dashboard\box;
@@ -23,7 +23,7 @@ use wcf\system\WCF;
 class WhoWasOnlineSidebarDashboardBox extends AbstractSidebarDashboardBox
 {
     /**
-     * user profile list
+     * user profile list.
      *
      * @var array<\wcf\data\user\UserWasOnline>
      */
@@ -34,6 +34,7 @@ class WhoWasOnlineSidebarDashboardBox extends AbstractSidebarDashboardBox
      *
      * @param \wcf\data\dashboard\box\DashboardBox $box
      * @param \wcf\page\IPage                      $page
+     *
      * @throws \wcf\system\exception\SystemException
      */
     public function init(DashboardBox $box, IPage $page)
@@ -44,9 +45,7 @@ class WhoWasOnlineSidebarDashboardBox extends AbstractSidebarDashboardBox
         try {
             $this->users = WhoWasOnlineCache::getInstance()->getAccessibleUsers(WHO_WAS_ONLINE_SIDEBAR_DISPLAY);
         } catch (InvalidArgumentException $e) {
-            throw new SystemException(
-                'Invalid value "' . WHO_WAS_ONLINE_SIDEBAR_DISPLAY . '" for option WHO_WAS_ONLINE_SIDEBAR_DISPLAY.'
-            );
+            throw new SystemException(sprintf('Invalid value "%s" for option WHO_WAS_ONLINE_SIDEBAR_DISPLAY.', WHO_WAS_ONLINE_SIDEBAR_DISPLAY));
         }
 
         $this->fetched();
@@ -56,6 +55,7 @@ class WhoWasOnlineSidebarDashboardBox extends AbstractSidebarDashboardBox
      * Returns the formatted output for the who was online sidebar box.
      *
      * @return string
+     *
      * @throws \wcf\system\exception\SystemException
      */
     protected function render()
@@ -67,7 +67,7 @@ class WhoWasOnlineSidebarDashboardBox extends AbstractSidebarDashboardBox
         WCF::getTPL()->assign(array(
             'whoWasOnline' => $this->users,
             'whoWasOnlineListCount' => count(WhoWasOnlineCache::getInstance()->getUserIDs()),
-            '__whoWasOnlineShowAllAvailable' => (count($this->users) > WHO_WAS_ONLINE_SIDEBAR_ITEMS)
+            '__whoWasOnlineShowAllAvailable' => (count($this->users) > WHO_WAS_ONLINE_SIDEBAR_ITEMS),
         ));
 
         return WCF::getTPL()->fetch('dashboardSidebarBoxWhoWasOnline');
