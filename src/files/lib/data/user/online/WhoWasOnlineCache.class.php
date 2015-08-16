@@ -10,7 +10,6 @@
 
 namespace wcf\data\user\online;
 
-use InvalidArgumentException;
 use wcf\system\cache\builder\WhoWasOnlineCacheBuilder;
 use wcf\system\SingletonFactory;
 use wcf\system\user\UserProfileHandler;
@@ -66,16 +65,23 @@ class WhoWasOnlineCache extends SingletonFactory
      * Returns the users who where online. This function respects privacy settings of the users.
      *
      * @param string $displayMode 'avatars' or 'usernames'
+     * @param string $sortField   'lastActivityTime' or 'username'
+     * @param string $sortOrder   'ASC' or 'DESC'
      *
-     * @return array<\wcf\data\user\online\UserWasOnline>
+     * @return array<\wcf\data\user\UserProfile>
      *
-     * @throws \InvalidArgumentException if the given display mode is invalid.
+     * @throws \InvalidArgumentException
      */
-    public function getAccessibleUsers($displayMode = 'avatars')
+    public function getAccessibleUsers($displayMode = 'avatars', $sortField = 'lastActivityTime', $sortOrder = 'DESC')
     {
-        // validate given display mode
         if ($displayMode !== 'avatars' && $displayMode !== 'usernames') {
-            throw new InvalidArgumentException(sprintf('Invalid display mode "%s" given. Expected either "avatars" or "usernames".', $displayMode));
+            throw new \InvalidArgumentException(sprintf('Invalid display mode "%s" given. Expected either "avatars" or "usernames".', $displayMode));
+        }
+        if ($sortField !== 'lastActivityTime' && $sortField !== 'username') {
+            throw new \InvalidArgumentException(sprintf('Invalid sort field "%s" given. Expected either "lastActivityTime" or "username".', $sortField));
+        }
+        if ($sortOrder !== 'ASC' && $sortOrder !== 'DESC') {
+            throw new \InvalidArgumentException(sprintf('Invalid sort order "%s" given.', $sortOrder));
         }
 
         $accessibleUserIDs = $this->getAccessibleUserIDs();
@@ -83,6 +89,7 @@ class WhoWasOnlineCache extends SingletonFactory
         if (count($accessibleUserIDs) !== 0) {
             $whoWasOnlineList = new WhoWasOnlineList($displayMode);
             $whoWasOnlineList->setObjectIDs($this->getAccessibleUserIDs());
+            $whoWasOnlineList->sqlOrderBy = $sortField.' '.$sortOrder;
             $whoWasOnlineList->readObjects();
 
             return $whoWasOnlineList->getObjects();

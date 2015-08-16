@@ -71,8 +71,7 @@ class WhoWasOnlineCacheBuilder extends AbstractCacheBuilder
             FROM wcf'.WCF_N.'_user user_table
             LEFT JOIN wcf'.WCF_N.'_user_option_value option_value ON (option_value.userID = user_table.userID)
             '.$additionalJoin.'
-            '.$conditionBuilder.'
-            ORDER BY user_table.'.WHO_WAS_ONLINE_SORT_FIELD.' '.WHO_WAS_ONLINE_SORT_ORDER;
+            '.$conditionBuilder;
 
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute($conditionBuilder->getParameters());

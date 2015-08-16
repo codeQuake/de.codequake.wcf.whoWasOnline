@@ -10,7 +10,6 @@
 
 namespace wcf\system\dashboard\box;
 
-use InvalidArgumentException;
 use wcf\data\dashboard\box\DashboardBox;
 use wcf\data\user\online\WhoWasOnlineCache;
 use wcf\page\IPage;
@@ -23,9 +22,9 @@ use wcf\system\WCF;
 class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
 {
     /**
-     * user profile list.
+     * List of user profiles.
      *
-     * @var array<\wcf\data\user\UserWasOnline>
+     * @var array<\wcf\data\user\UserProfile>
      */
     public $users = array();
 
@@ -43,8 +42,8 @@ class WhoWasOnlineContentDashboardBox extends AbstractContentDashboardBox
 
         // fetch users
         try {
-            $this->users = WhoWasOnlineCache::getInstance()->getAccessibleUsers(WHO_WAS_ONLINE_CONTENT_DISPLAY);
-        } catch (InvalidArgumentException $e) {
+            $this->users = WhoWasOnlineCache::getInstance()->getAccessibleUsers(WHO_WAS_ONLINE_CONTENT_DISPLAY, WHO_WAS_ONLINE_SORT_FIELD, WHO_WAS_ONLINE_SORT_ORDER);
+        } catch (\InvalidArgumentException $e) {
             throw new SystemException(sprintf('Invalid value "%s" for option WHO_WAS_ONLINE_CONTENT_DISPLAY.', WHO_WAS_ONLINE_CONTENT_DISPLAY));
         }
 
