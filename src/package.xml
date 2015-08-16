@@ -19,6 +19,8 @@
     </requiredpackages>
 
     <excludedpackages>
+        <excludedpackage version="2.2.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+
         <!-- mobahner's user online list contains some files that are named identically to files of this package.
         Therefore, both packages cannot coexist. -->
         <excludedpackage version="1.0.0 Alpha 1">com.mobahner.wcf.whoWasOnline</excludedpackage>
