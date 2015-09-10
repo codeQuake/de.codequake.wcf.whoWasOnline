@@ -42,7 +42,7 @@
         <instruction type="script">acp/install_de.codequake.wcf.whoWasOnline.php</instruction>
     </instructions>
 
-    <instructions type="update">
+    <instructions type="update" fromversion="1.0.0">
         <instruction type="file">files.tar</instruction>
         <instruction type="template">templates.tar</instruction>
         <instruction type="language">language/*.xml</instruction>
