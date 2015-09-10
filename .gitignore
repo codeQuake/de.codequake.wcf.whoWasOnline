@@ -1,3 +1,10 @@
+# Package Builds
+de.codequake.wcf.whoWasOnline.tar
+
 # Composer
 composer.phar
+composer.lock
 vendor/
+
+# Node
+node_modules
