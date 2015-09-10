@@ -14,6 +14,21 @@
         </categories>
 
         <options>
+            <!-- general -->
+            <option name="who_was_online_record">
+                <categoryname>general</categoryname>
+                <optiontype>integer</optiontype>
+                <defaultvalue>0</defaultvalue>
+                <hidden>1</hidden>
+            </option>
+            <option name="who_was_online_record_time">
+                <optiontype>integer</optiontype>
+                <hidden>1</hidden>
+                <defaultvalue>0</defaultvalue>
+                <categoryname>general</categoryname>
+            </option>
+            <!-- /general -->
+
             <!-- user.list.whoWasOnline -->
             <option name="who_was_online_period">
                 <categoryname>user.list.whoWasOnline</categoryname>
@@ -40,6 +55,11 @@ lastActivityTime:wcf.user.usersOnline.lastActivity]]></selectoptions>
                 <defaultvalue>DESC</defaultvalue>
                 <selectoptions><![CDATA[ASC:wcf.global.sortOrder.ascending
 DESC:wcf.global.sortOrder.descending]]></selectoptions>
+            </option>
+            <option name="who_was_online_enable_record">
+                <categoryname>user.list.whoWasOnline</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
             </option>
             <!-- /user.list.whoWasOnline -->
 

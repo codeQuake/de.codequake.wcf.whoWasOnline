@@ -5,6 +5,7 @@
         <item name="wcf.acp.option.category.dashboard.sidebar.whoWasOnline"><![CDATA[„Wer war online?“-Liste]]></item>
         <item name="wcf.acp.option.category.user.list.whoWasOnline"><![CDATA[„Wer war online?“-Liste]]></item>
         <item name="wcf.acp.option.who_was_online_content_display"><![CDATA[Anzeige]]></item>
+        <item name="wcf.acp.option.who_was_online_enable_record"><![CDATA[Rekord erfassen]]></item>
         <item name="wcf.acp.option.who_was_online_exclude_active"><![CDATA[Aktive Benutzer ausblenden]]></item>
         <item name="wcf.acp.option.who_was_online_exclude_active.description"><![CDATA[Benutzer, die zum aktuellen Zeitpunkt online sind, werden in der „Wer war online?“-Liste ausgeblendet.]]></item>
         <item name="wcf.acp.option.who_was_online_period"><![CDATA[Zeitraum]]></item>
@@ -22,9 +23,11 @@
     </category>
 
     <category name="wcf.user.whoWasOnline">
+        <item name="wcf.user.whoWasOnline.avatar.title"><![CDATA[{$user->username} ({@$user->lastActivityTime|plainTime})]]></item>
         <item name="wcf.user.whoWasOnline.display.avatars"><![CDATA[Avatare der Benutzer]]></item>
         <item name="wcf.user.whoWasOnline.display.usernames"><![CDATA[Benutzernamen]]></item>
+        <item name="wcf.user.whoWasOnline.record"><![CDATA[Rekord: {#WHO_WAS_ONLINE_RECORD} Mitglieder am {@WHO_WAS_ONLINE_RECORD_TIME|date}]]></item>
         <item name="wcf.user.whoWasOnline.showAll"><![CDATA[Alle anzeigen]]></item>
-        <item name="wcf.user.whoWasOnline.title"><![CDATA[Benutzer, die {if WHO_WAS_ONLINE_PERIOD == 'today'}heute{else}in den letzten 24 Stunden{/if} online waren]]></item>
+        <item name="wcf.user.whoWasOnline.title"><![CDATA[Mitglieder, die {if WHO_WAS_ONLINE_PERIOD == 'today'}heute{else}in den letzten 24 Stunden{/if} online waren]]></item>
     </category>
 </language>

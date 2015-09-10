@@ -5,6 +5,7 @@
         <item name="wcf.acp.option.category.dashboard.sidebar.whoWasOnline"><![CDATA[“Who was online?” list]]></item>
         <item name="wcf.acp.option.category.user.list.whoWasOnline"><![CDATA[“Who was online?” list]]></item>
         <item name="wcf.acp.option.who_was_online_content_display"><![CDATA[Display]]></item>
+        <item name="wcf.acp.option.who_was_online_enable_record"><![CDATA[Enable Record]]></item>
         <item name="wcf.acp.option.who_was_online_exclude_active"><![CDATA[Exclude Active Users]]></item>
         <item name="wcf.acp.option.who_was_online_period"><![CDATA[Threshold]]></item>
         <item name="wcf.acp.option.who_was_online_period.24h"><![CDATA[Last 24 hours]]></item>
@@ -23,7 +24,8 @@
     <category name="wcf.user.whoWasOnline">
         <item name="wcf.user.whoWasOnline.display.avatars"><![CDATA[Avatars]]></item>
         <item name="wcf.user.whoWasOnline.display.usernames"><![CDATA[Username]]></item>
+        <item name="wcf.user.whoWasOnline.record"><![CDATA[Record: {#WHO_WAS_ONLINE_RECORD} members ({@WHO_WAS_ONLINE_RECORD_TIME|date})]]></item>
         <item name="wcf.user.whoWasOnline.showAll"><![CDATA[Show all]]></item>
-        <item name="wcf.user.whoWasOnline.title"><![CDATA[Users who were online {if WHO_WAS_ONLINE_PERIOD == 'today'}today{else}in the past 24 hours{/if}]]></item>
+        <item name="wcf.user.whoWasOnline.title"><![CDATA[Members who were online {if WHO_WAS_ONLINE_PERIOD == 'today'}today{else}in the past 24 hours{/if}]]></item>
     </category>
 </language>
