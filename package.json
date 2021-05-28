@@ -1,7 +1,0 @@
-{
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-tar": "^1.4.0",
-    "merge-stream": "^1.0.0"
-  }
-}
